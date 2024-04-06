@@ -13,5 +13,4 @@
   display: grid;
   grid-template-columns: repeat($ccnt, $cw);
   grid-template-rows: repeat($rcnt, $ch);
-  border: 1px solid $grey04;
 }
