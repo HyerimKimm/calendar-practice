@@ -2,13 +2,15 @@ import React, { useMemo, useState } from "react";
 import classes from "./Calendar.module.scss";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
+import { calendarStore } from "./store/calenderStore";
+
 dayjs.locale("ko");
 
 const Calendar = () => {
-  //선택한 날짜
-  const [selectedDay, setSelectedDay] = useState(dayjs());
   // 오늘 날짜
   const today = dayjs();
+  //선택한 날짜
+  const { selectedDay, setSelectedDay } = calendarStore();
   // 선택한 날짜의 월
   const daysInMonth = selectedDay.daysInMonth();
   // 선택한 날짜 월의 첫번쨰 날짜
