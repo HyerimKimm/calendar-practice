@@ -1,0 +1,17 @@
+@import "./variable.scss";
+
+@mixin flex($d, $j, $a, $g) {
+  display: flex;
+  flex-direction: $d;
+  justify-content: $j;
+  align-items: $a;
+  gap: $g;
+}
+
+@mixin grid($rcnt, $ccnt, $cw, $ch) {
+  // 행수, 열수, 칸 너비, 칸 높이
+  display: grid;
+  grid-template-columns: repeat($ccnt, $cw);
+  grid-template-rows: repeat($rcnt, $ch);
+  border: 1px solid $grey04;
+}
