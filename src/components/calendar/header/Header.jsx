@@ -1,14 +1,24 @@
 import React from "react";
-import classes from "./Header.module.scss";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
+import classes from "./Header.module.scss";
+import { calendarStore } from "../calenderStore";
 
 dayjs.locale("ko");
 
 const Header = () => {
-  const selectedDay = dayjs();
-  const handleGetPrevMonth = () => {};
-  const handleGetNextMonth = () => {};
+  const { selectedDay, setSelectedDay } = calendarStore();
+  // selectedDay를 이전달로 변경
+  function handleGetPrevMonth() {
+    const prevMonth = selectedDay.subtract(1, "month");
+    setSelectedDay(prevMonth);
+  }
+
+  // selectedDay를 값을 다음달로 변경
+  function handleGetNextMonth() {
+    const nextMonth = selectedDay.add(1, "month");
+    setSelectedDay(nextMonth);
+  }
 
   return (
     <header className={classes.calendar_header_wrapper}>

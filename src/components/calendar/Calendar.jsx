@@ -1,16 +1,16 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import classes from "./Calendar.module.scss";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
-import { calendarStore } from "./store/calenderStore";
+import Header from "./header/Header";
+import Item from "./item/Item";
+import { calendarStore } from "./calenderStore";
 
 dayjs.locale("ko");
 
 const Calendar = () => {
-  // 오늘 날짜
-  const today = dayjs();
   //선택한 날짜
-  const { selectedDay, setSelectedDay } = calendarStore();
+  const { selectedDay } = calendarStore();
   // 선택한 날짜의 월
   const daysInMonth = selectedDay.daysInMonth();
   // 선택한 날짜 월의 첫번쨰 날짜
@@ -21,11 +21,6 @@ const Calendar = () => {
     [daysInMonth, firstDayOfMonth]
   );
   const weekHeaders = makeWeekdays();
-
-  // 일자 선택했을 때 실행
-  function handleNewDateClick(newDate) {
-    setSelectedDay(newDate);
-  }
 
   // 해당 월의 시작일을 받아서 해당 월의 전체 일자 배열을 반환하는 함수
   function makeDates(daysInMonth, firstDayOfMonth) {
@@ -68,25 +63,9 @@ const Calendar = () => {
     return weekdays;
   }
 
-  // selectedDay를 이전달로 변경
-  function handleGetPrevMonth() {
-    const prevMonth = selectedDay.subtract(1, "month");
-    setSelectedDay(prevMonth);
-  }
-
-  // selectedDay를 값을 다음달로 변경
-  function handleGetNextMonth() {
-    const nextMonth = selectedDay.add(1, "month");
-    setSelectedDay(nextMonth);
-  }
-
   return (
     <div className={classes.calendar_wrapper}>
-      <header className={classes.calendar_header_wrapper}>
-        <button onClick={handleGetPrevMonth}>{`<`}</button>
-        <div>{selectedDay.format("YYYY-MM-DD ddd")}</div>
-        <button onClick={handleGetNextMonth}>{`>`}</button>
-      </header>
+      <Header />
       <header className={classes.calendar_day_of_week_label_wrapper}>
         {weekHeaders.map((ddd, index) => (
           <div key={index}>{ddd}</div>
@@ -94,32 +73,7 @@ const Calendar = () => {
       </header>
       <main className={classes.calendar_main_wrapper}>
         {dates.map((date, index) => {
-          if (date === "") return <div></div>;
-          return (
-            <div
-              key={index}
-              className={`${classes.day_item}  
-              ${
-                date.format("YYYYMMDD") === today.format("YYYYMMDD") &&
-                classes.today
-              } 
-              ${date.format("ddd") === "일" && classes.sunday} ${
-                date.format("ddd") === "토" && classes.saturday
-              } 
-              ${
-                date.format("YYYYMMDD") === selectedDay.format("YYYYMMDD") &&
-                classes.selected
-              }`}
-              onClick={() => {
-                handleNewDateClick(date);
-              }}
-            >
-              {date.format("D")}
-              {date.format("YYYYMMDD") === today.format("YYYYMMDD") && (
-                <div className={classes.label}>오늘</div>
-              )}
-            </div>
-          );
+          return <Item key={index} date={date} />;
         })}
       </main>
     </div>
