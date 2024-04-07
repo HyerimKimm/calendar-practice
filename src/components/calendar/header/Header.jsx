@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import "dayjs/locale/ko";
 import classes from "./Header.module.scss";
 import { calendarStore } from "../calenderStore";
+import Arrow from "../../../assets/images/Arrow";
 
 dayjs.locale("ko");
 
@@ -22,9 +23,13 @@ const Header = () => {
 
   return (
     <header className={classes.calendar_header_wrapper}>
-      <button onClick={handleGetPrevMonth}>{`<`}</button>
-      <div>{selectedDay.format("YYYY-MM-DD ddd")}</div>
-      <button onClick={handleGetNextMonth}>{`>`}</button>
+      <button onClick={handleGetPrevMonth}>
+        <Arrow width={16} height={16} rotate={180} />
+      </button>
+      <h5 className={classes.title}>{selectedDay.format("YYYY.MM")}</h5>
+      <button onClick={handleGetNextMonth}>
+        <Arrow width={16} height={16} rotate={0} />
+      </button>
     </header>
   );
 };

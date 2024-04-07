@@ -1,7 +1,9 @@
 import React from "react";
-import classes from "./Item.module.scss";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
+
+import classes from "./Item.module.scss";
+
 import { calendarStore } from "../calenderStore";
 
 dayjs.locale("ko");
@@ -18,17 +20,20 @@ const Item = ({ date }) => {
   }
 
   if (date === "") return <div></div>;
+
   return (
     <div
-      className={`${classes.day_item}  
-    ${date.format("YYYYMMDD") === today.format("YYYYMMDD") && classes.today} 
-    ${date.format("ddd") === "일" && classes.sunday} ${
-        date.format("ddd") === "토" && classes.saturday
+      className={`
+      ${classes.day_item}  
+      ${date.format("YYYYMMDD") === today.format("YYYYMMDD") && classes.today} 
+      ${date.format("ddd") === "일" ? classes.sunday : ""} ${
+        date.format("ddd") === "토" ? classes.saturday : ""
       } 
-    ${
-      date.format("YYYYMMDD") === selectedDay.format("YYYYMMDD") &&
-      classes.selected
-    }`}
+      ${
+        date.format("YYYYMMDD") === selectedDay.format("YYYYMMDD") &&
+        classes.selected
+      }
+      `}
       onClick={() => {
         handleNewDateClick(date);
       }}

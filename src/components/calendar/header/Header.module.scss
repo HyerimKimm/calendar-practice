@@ -2,4 +2,9 @@
 
 .calendar_header_wrapper {
   @include flex(row, center, center, 4px);
+
+  .title {
+    font-family: "pretendard-medium";
+    font-size: 20px;
+  }
 }
