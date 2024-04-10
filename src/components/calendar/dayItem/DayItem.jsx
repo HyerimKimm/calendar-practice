@@ -2,14 +2,13 @@ import React from "react";
 import classes from "./DayItem.module.scss";
 import dayjs from "dayjs";
 
-const DayItem = ({ date, selectedDate, setSelectedDate, disableDates }) => {
+const DayItem = ({
+  date,
+  selectedDate,
+  setSelectedDate,
+  isDisable = false,
+}) => {
   const today = dayjs();
-  // 오늘날짜보다 이전 날짜인 경우, disableDates에 포함되어 있는 날짜인 경우
-  const isDisable =
-    date.isBefore(today.startOf("day")) ||
-    disableDates
-      .map((date) => date.format("YYYYMMDD"))
-      .includes(date.format("YYYYMMDD"));
 
   const handleDateClick = () => {
     if (isDisable) return;
@@ -24,7 +23,7 @@ const DayItem = ({ date, selectedDate, setSelectedDate, disableDates }) => {
         today.format("YYYYMMDD") === date.format("YYYYMMDD")
           ? classes.today
           : ""
-      }s
+      }
       ${
         date.format("YYYYMMDD") === selectedDate.format("YYYYMMDD")
           ? classes.selected
@@ -32,6 +31,7 @@ const DayItem = ({ date, selectedDate, setSelectedDate, disableDates }) => {
       }
       ${isDisable ? classes.disable : ""}
       ${
+        /* 저번 달 숫자인 경우 회색 처리 */
         date.format("YYYYMM") !== selectedDate.format("YYYYMM")
           ? classes.disable
           : ""

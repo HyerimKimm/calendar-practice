@@ -3,10 +3,7 @@ import React, { useMemo } from "react";
 import DayItem from "../dayItem/DayItem.jsx";
 import classes from "./DayTable.module.scss";
 
-dayjs.locale("ko");
-dayjs.locale("en");
-
-const DayTable = ({ selectedDate, setSelectedDate, disableDates }) => {
+const DayTable = ({ selectedDate, setSelectedDate, getDisabledDates }) => {
   // 선택한 날짜를 받아서 선택한 날짜의 월의 전체 일자 배열을 반환하는 함수
   const makeDates = (selectedDate) => {
     const daysInMonth = selectedDate.daysInMonth(); // 선택한 날짜의 월의 전체 일자
@@ -19,35 +16,35 @@ const DayTable = ({ selectedDate, setSelectedDate, disableDates }) => {
       dates.push(date);
     }
 
-    switch (firstDayOfMonth.locale("ko").format("ddd")) {
-      case "일":
+    switch (firstDayOfMonth.format("ddd")) {
+      case "Sun":
         break;
-      case "월":
+      case "Mon":
         dates.unshift(dayjs(firstDayOfMonth).subtract(1, "day"));
         break;
-      case "화":
+      case "Tue":
         dates.unshift(dayjs(firstDayOfMonth).subtract(1, "day"));
         dates.unshift(dayjs(firstDayOfMonth).subtract(2, "day"));
         break;
-      case "수":
+      case "Wed":
         dates.unshift(dayjs(firstDayOfMonth).subtract(1, "day"));
         dates.unshift(dayjs(firstDayOfMonth).subtract(2, "day"));
         dates.unshift(dayjs(firstDayOfMonth).subtract(3, "day"));
         break;
-      case "목":
+      case "Thu":
         dates.unshift(dayjs(firstDayOfMonth).subtract(1, "day"));
         dates.unshift(dayjs(firstDayOfMonth).subtract(2, "day"));
         dates.unshift(dayjs(firstDayOfMonth).subtract(3, "day"));
         dates.unshift(dayjs(firstDayOfMonth).subtract(4, "day"));
         break;
-      case "금":
+      case "Fri":
         dates.unshift(dayjs(firstDayOfMonth).subtract(1, "day"));
         dates.unshift(dayjs(firstDayOfMonth).subtract(2, "day"));
         dates.unshift(dayjs(firstDayOfMonth).subtract(3, "day"));
         dates.unshift(dayjs(firstDayOfMonth).subtract(4, "day"));
         dates.unshift(dayjs(firstDayOfMonth).subtract(5, "day"));
         break;
-      case "토":
+      case "Sat":
         dates.unshift(dayjs(firstDayOfMonth).subtract(1, "day"));
         dates.unshift(dayjs(firstDayOfMonth).subtract(2, "day"));
         dates.unshift(dayjs(firstDayOfMonth).subtract(3, "day"));
@@ -73,7 +70,7 @@ const DayTable = ({ selectedDate, setSelectedDate, disableDates }) => {
             date={date}
             selectedDate={selectedDate}
             setSelectedDate={setSelectedDate}
-            disableDates={disableDates}
+            isDisable={getDisabledDates(date)}
           />
         ))}
       </div>

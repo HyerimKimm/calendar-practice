@@ -35,7 +35,7 @@ const Arrow = ({ width = 16, height = 16, rotate = 90 }) => {
             transform="translate(-3476.385 -10137.934) rotate(90)"
             fill="none"
             stroke="#161d24"
-            stroke-width="1"
+            strokeWidth="1"
           />
         </g>
       </svg>
