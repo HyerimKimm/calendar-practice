@@ -1,5 +1,7 @@
 <h1>Dayjs Calendar</h1>
 <img src="https://github.com/HyerimKimm/dayjs-calendar/assets/50258232/f4cc1836-ae00-4ef5-9f64-975692a1b751" width="300"/>
+<img src="https://github.com/HyerimKimm/dayjs-calendar/assets/50258232/3e4849fc-6be7-40e2-8288-c3f8ff914df8" width="300"/>
+
 <h3>프로젝트 소개</h3>
 <ul>
   <li>React.js 환경에서 구현한 dayjs 캘린더입니다. </li>
