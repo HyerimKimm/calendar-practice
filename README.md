@@ -8,7 +8,10 @@
   <li>dayjs 라이브러리를 활용하여 날짜 계산을 하는 사내 프로젝트에서의 간편한 캘린더 사용과 커스텀을 위해 구현되었습니다. </li>
 </ul>
 <h1>Dependancy</h1>
-<ul><li>dayjs ( https://www.npmjs.com/package/dayjs )</li></ul>
+<ul>
+  <li>dayjs 라이브러리 ( https://www.npmjs.com/package/dayjs )</li>
+  <li>sass 라이브러리 ( https://www.npmjs.com/package/sass )</li>
+</ul>
 <h1>주요 기능</h1>
 <ul>
   <li>selectedDate, setSelectedDate props로 날짜를 선택할 수 있습니다.</li>
