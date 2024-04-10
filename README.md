@@ -21,8 +21,9 @@
 <h1>캘린더 사용하기</h1>
 <img width="438" alt="스크린샷 2024-04-10 오후 5 25 31" src="https://github.com/HyerimKimm/dayjs-calendar/assets/50258232/e631bc0e-1a39-4bb0-ad14-dc902a5fd431">
 <ul>
-  <li>selectedDate : dayjs객체여야 합니다. </li>
-  <li></li>
+  <li>selectedDate : 캘린더에서 선택된 값이 입력됩니다. 초기 값이 dayjs객체인 상태여야 합니다. </li>
+  <li>setSelectedDate : selectedDate의 값을 변경하는 setState 함수여야 합니다.</li>
   <li></li>
 </ul>
-<h3>캘린더 구현 방법</h3>
+<h1>캘린더 구현 방법</h1>
+
