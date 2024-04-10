@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useMemo } from "react";
 import classes from "./DayItem.module.scss";
 import dayjs from "dayjs";
 
-const DayItem = ({ date, selectedDate, setSelectedDate, getDisabledDates }) => {
+const DayItem = ({
+  date,
+  selectedDate,
+  setSelectedDate,
+  selectedStartDate,
+  setSelectedStartDate,
+  getDisabledDates,
+}) => {
   const today = dayjs();
   const isDisable = getDisabledDates(date);
+  const isPrevMonth =
+    date.format("YYYYMM") !== selectedStartDate.format("YYYYMM");
 
   const handleDateClick = () => {
     if (isDisable) return;
+    if (isPrevMonth) {
+      setSelectedStartDate(selectedDate.startOf("month"));
+    }
     setSelectedDate(date);
   };
 
@@ -28,9 +40,7 @@ const DayItem = ({ date, selectedDate, setSelectedDate, getDisabledDates }) => {
       ${isDisable ? classes.disable : ""}
       ${
         /* 저번 달 숫자인 경우 회색 처리 */
-        date.format("YYYYMM") !== selectedDate.format("YYYYMM")
-          ? classes.disable
-          : ""
+        isPrevMonth ? classes.prev_month : ""
       }`}
       onClick={handleDateClick}
     >

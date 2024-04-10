@@ -3,54 +3,61 @@ import React, { useMemo } from "react";
 import DayItem from "../dayItem/DayItem.jsx";
 import classes from "./DayTable.module.scss";
 
-const DayTable = ({ selectedDate, setSelectedDate, getDisabledDates }) => {
-  // 선택한 날짜를 받아서 선택한 날짜의 월의 전체 일자 배열을 반환하는 함수
-  const makeDates = (selectedDate) => {
-    const daysInMonth = selectedDate.daysInMonth(); // 선택한 날짜의 월의 전체 일자
-    const firstDayOfMonth = dayjs(selectedDate).startOf("month");
+//selectedStartDate={selectedStartDate}
+//setSelectedStartDate={setSelectedStartDate}
+const DayTable = ({
+  selectedStartDate,
+  setSelectedStartDate,
+  selectedDate,
+  setSelectedDate,
+  getDisabledDates,
+}) => {
+  // 선택한 월의 첫번째 날짜를 받아서 월의 전체 일자 배열을 반환하는 함수
+  const makeDates = (selectedStartDate) => {
+    const daysInMonth = selectedStartDate.daysInMonth(); // 월의 전체 일자
 
     const dates = [];
 
     for (let i = 0; i < daysInMonth; i++) {
-      const date = dayjs(firstDayOfMonth).add(i, "day");
+      const date = dayjs(selectedStartDate).add(i, "day");
       dates.push(date);
     }
 
-    switch (firstDayOfMonth.format("ddd")) {
+    switch (selectedStartDate.format("ddd")) {
       case "Sun":
         break;
       case "Mon":
-        dates.unshift(dayjs(firstDayOfMonth).subtract(1, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(1, "day"));
         break;
       case "Tue":
-        dates.unshift(dayjs(firstDayOfMonth).subtract(1, "day"));
-        dates.unshift(dayjs(firstDayOfMonth).subtract(2, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(1, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(2, "day"));
         break;
       case "Wed":
-        dates.unshift(dayjs(firstDayOfMonth).subtract(1, "day"));
-        dates.unshift(dayjs(firstDayOfMonth).subtract(2, "day"));
-        dates.unshift(dayjs(firstDayOfMonth).subtract(3, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(1, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(2, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(3, "day"));
         break;
       case "Thu":
-        dates.unshift(dayjs(firstDayOfMonth).subtract(1, "day"));
-        dates.unshift(dayjs(firstDayOfMonth).subtract(2, "day"));
-        dates.unshift(dayjs(firstDayOfMonth).subtract(3, "day"));
-        dates.unshift(dayjs(firstDayOfMonth).subtract(4, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(1, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(2, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(3, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(4, "day"));
         break;
       case "Fri":
-        dates.unshift(dayjs(firstDayOfMonth).subtract(1, "day"));
-        dates.unshift(dayjs(firstDayOfMonth).subtract(2, "day"));
-        dates.unshift(dayjs(firstDayOfMonth).subtract(3, "day"));
-        dates.unshift(dayjs(firstDayOfMonth).subtract(4, "day"));
-        dates.unshift(dayjs(firstDayOfMonth).subtract(5, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(1, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(2, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(3, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(4, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(5, "day"));
         break;
       case "Sat":
-        dates.unshift(dayjs(firstDayOfMonth).subtract(1, "day"));
-        dates.unshift(dayjs(firstDayOfMonth).subtract(2, "day"));
-        dates.unshift(dayjs(firstDayOfMonth).subtract(3, "day"));
-        dates.unshift(dayjs(firstDayOfMonth).subtract(4, "day"));
-        dates.unshift(dayjs(firstDayOfMonth).subtract(5, "day"));
-        dates.unshift(dayjs(firstDayOfMonth).subtract(6, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(1, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(2, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(3, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(4, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(5, "day"));
+        dates.unshift(dayjs(selectedStartDate).subtract(6, "day"));
         break;
       default:
         break;
@@ -59,7 +66,10 @@ const DayTable = ({ selectedDate, setSelectedDate, getDisabledDates }) => {
     return dates;
   };
 
-  const datesOfMonth = useMemo(() => makeDates(selectedDate), [selectedDate]);
+  const datesOfMonth = useMemo(
+    () => makeDates(selectedStartDate),
+    [selectedStartDate]
+  );
 
   return (
     <div className={classes.day_table_wrapper}>
@@ -70,6 +80,8 @@ const DayTable = ({ selectedDate, setSelectedDate, getDisabledDates }) => {
             date={date}
             selectedDate={selectedDate}
             setSelectedDate={setSelectedDate}
+            selectedStartDate={selectedStartDate}
+            setSelectedStartDate={setSelectedStartDate}
             getDisabledDates={getDisabledDates}
           />
         ))}

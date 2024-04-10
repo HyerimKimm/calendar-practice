@@ -10,6 +10,10 @@
     color: $grey04;
   }
 
+  &.prev_month {
+    opacity: 0;
+  }
+
   &.today {
     color: $brand01;
 

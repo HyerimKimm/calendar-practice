@@ -2,5 +2,5 @@
 
 .calendar_wrapper {
   width: 100%;
-  @include flex(column, center, center, 10px);
+  @include flex(column, center, center, 0);
 }

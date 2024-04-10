@@ -2,13 +2,13 @@ import React from "react";
 import classes from "./Header.module.scss";
 import Arrow from "../../../assets/images/Arrow";
 
-const Header = ({ selectedDate, setSelectedDate }) => {
+const Header = ({ selectedStartDate, setSelectedStartDate }) => {
   const handleGoPrevClick = () => {
-    setSelectedDate((prev) => prev.subtract(1, "month"));
+    setSelectedStartDate((prev) => prev.subtract(1, "month"));
   };
 
   const handleGoNextClick = () => {
-    setSelectedDate((prev) => prev.add(1, "month"));
+    setSelectedStartDate((prev) => prev.add(1, "month"));
   };
 
   return (
@@ -19,7 +19,7 @@ const Header = ({ selectedDate, setSelectedDate }) => {
       >
         <Arrow />
       </button>
-      <h2>{selectedDate.format("YYYY.MM")}</h2>
+      <h2>{selectedStartDate.format("YYYY.MM")}</h2>
       <button
         className={`${classes.button} ${classes.next}`}
         onClick={handleGoNextClick}
