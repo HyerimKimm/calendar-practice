@@ -70,7 +70,7 @@ const DayTable = ({ selectedDate, setSelectedDate, getDisabledDates }) => {
             date={date}
             selectedDate={selectedDate}
             setSelectedDate={setSelectedDate}
-            isDisable={getDisabledDates(date)}
+            getDisabledDates={getDisabledDates}
           />
         ))}
       </div>

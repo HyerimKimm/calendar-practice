@@ -9,6 +9,7 @@ function App() {
   const disableDates = [dayjs().add(3, "day")];
 
   const getDisabledDates = (checkedDate) => {
+    console.log("getDisabledDates 실행됨");
     // 1. checkedDate가 diableDates에 포함되면 true
     if (
       disableDates

@@ -2,13 +2,9 @@ import React from "react";
 import classes from "./DayItem.module.scss";
 import dayjs from "dayjs";
 
-const DayItem = ({
-  date,
-  selectedDate,
-  setSelectedDate,
-  isDisable = false,
-}) => {
+const DayItem = ({ date, selectedDate, setSelectedDate, getDisabledDates }) => {
   const today = dayjs();
+  const isDisable = getDisabledDates(date);
 
   const handleDateClick = () => {
     if (isDisable) return;
