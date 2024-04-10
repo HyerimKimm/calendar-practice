@@ -8,6 +8,7 @@
 <h3>주요 기능</h3>
 <ul><li></li></ul>
 <h3>캘린더 사용하기</h3>
-![image](https://github.com/HyerimKimm/dayjs-calendar/assets/50258232/3eef3a44-d4b2-4f81-beb7-20edaaa5c773)
+<img width="438" alt="스크린샷 2024-04-10 오후 5 25 31" src="https://github.com/HyerimKimm/dayjs-calendar/assets/50258232/e631bc0e-1a39-4bb0-ad14-dc902a5fd431">
+
 
 <ul><li></li></ul>
