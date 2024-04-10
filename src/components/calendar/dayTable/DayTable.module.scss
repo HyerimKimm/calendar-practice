@@ -1,0 +1,11 @@
+@import "../../../styles/reset.scss";
+.day_table_wrapper {
+  @include flex(row, center, center, 0);
+}
+.day_table_grid_wrapper {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: auto;
+}

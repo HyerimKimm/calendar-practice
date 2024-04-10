@@ -1,0 +1,13 @@
+@import "../../../styles/reset.scss";
+
+.day_of_week_label_wrapper {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(7, 1fr);
+  height: calc(72.43vw / 6);
+
+  .day_of_week_label_li {
+    @include flex(row, center, center, 0);
+    width: 100%;
+  }
+}

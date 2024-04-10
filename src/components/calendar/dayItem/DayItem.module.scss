@@ -1,0 +1,26 @@
+@import "../../../styles/reset.scss";
+
+.item_wrapper {
+  @include flex(column, center, center, 0);
+  cursor: pointer;
+  width: calc(100vw / 7);
+  aspect-ratio: 1;
+
+  &.disable {
+    color: $grey04;
+  }
+
+  &.today {
+    color: $brand01;
+
+    .label {
+      font-size: 12px;
+    }
+  }
+
+  &.selected {
+    background-color: $brand01;
+    color: $white;
+    border-radius: 8px;
+  }
+}

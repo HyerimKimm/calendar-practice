@@ -1,8 +1,6 @@
 @import "../../styles/reset.scss";
 
 .calendar_wrapper {
+  width: 100%;
   @include flex(column, center, center, 10px);
-}
-.calendar_main_wrapper {
-  @include grid(5, 7, 1fr, 1fr);
 }

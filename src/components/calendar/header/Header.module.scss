@@ -1,10 +1,19 @@
 @import "../../../styles/reset.scss";
 
-.calendar_header_wrapper {
-  @include flex(row, center, center, 4px);
-
+.header_wrapper {
+  @include flex(row, start, center, 4px);
+  width: 100%;
   .title {
     font-family: "pretendard-medium";
     font-size: 20px;
+  }
+
+  .button {
+    &.prev {
+      transform: rotate(90deg);
+    }
+    &.next {
+      transform: rotate(270deg);
+    }
   }
 }

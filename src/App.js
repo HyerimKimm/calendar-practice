@@ -1,14 +1,18 @@
 import dayjs from "dayjs";
 import classes from "./App.module.scss";
 import Calendar from "./components/calendar/Calendar";
+import { useState } from "react";
 
 function App() {
-  const defaultDate = dayjs().add(1, "day");
+  const [selectedDate, setSelectedDate] = useState(dayjs());
 
   return (
     <div className={classes.app_wrapper}>
-      <h2>캘린더</h2>
-      <Calendar defaultDate={defaultDate} />
+      <Calendar
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+        disableDates={[]}
+      />
     </div>
   );
 }
